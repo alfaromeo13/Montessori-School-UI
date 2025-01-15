@@ -1,0 +1,60 @@
+<div class="modal-body">
+  <form [formGroup]="createEventForm">
+    <label for="title">Title</label>
+    <input
+      id="title"
+      formControlName="title"
+      type="text"
+      class="form-control"
+    />
+
+    <div class="content-blocks mt-3">
+      <div formArrayName="contentBlocks">
+        <div *ngFor="let block of contentBlocks.controls; let i = index" [formGroupName]="i">
+          <div *ngIf="block.get('type')?.value === 'text'" class="text-block">
+            <label>Text Block</label>
+            <textarea
+              formControlName="value"
+              class="form-control"
+              placeholder="Enter your text here"
+            ></textarea>
+          </div>
+
+          <div *ngIf="block.get('type')?.value === 'image'" class="image-block">
+            <label>Image Block</label>
+            <ul>
+              <li *ngFor="let image of block.get('values')?.value; let j = index">
+                {{ image }}
+              </li>
+            </ul>
+          </div>
+
+          <button type="button" class="btn btn-danger" (click)="removeBlock(i)">
+            Remove Block
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group mt-3">
+      <button type="button" class="btn btn-primary" (click)="addTextBlock()">
+        Add Text Block
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="addImageBlock()">
+        Add Image Block
+      </button>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    (click)="onFormSubmit()"
+    [disabled]="loading"
+    class="btn btn-success"
+  >
+    Submit
+  </button>
+  <button (click)="modalService.dismissAll()" class="btn btn-danger">
+    Cancel
+  </button>
+</div>

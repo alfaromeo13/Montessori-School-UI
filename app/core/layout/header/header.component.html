@@ -1,0 +1,49 @@
+<div class="navbar container">
+  <div class="container-fluid bg-white d-flex justify-content-between align-items-center flex-wrap">
+    <div [routerLink]="'/'"
+         class="d-flex gap-1 align-items-center cursor-pointer">
+      <a>
+        <img ngSrc="/white_logo.png"
+             alt="logo"
+             priority
+             width="120"
+             height="120">
+      </a>
+      <h3 class="mb-0">Montessori Koper</h3>
+    </div>
+    <div>
+      <ul class="d-flex justify-content-center gap-2 gap-md-4 mb-0">
+        <li class="list-unstyled">
+          <a [routerLinkActive]="'active'"
+             [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="'/'"
+             class="navbar-link">{{ 'O šoli' }}</a>
+        </li>
+        <li class="list-unstyled">
+          <a [routerLinkActive]="'active'"
+             [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="'/vpis'"
+             class="navbar-link">{{ 'Vpis' }}</a>
+        </li>
+        <li class="list-unstyled">
+          <a [routerLinkActive]="'active'"
+             [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="'/dogodki'"
+             class="navbar-link">{{ 'Dogodki' }}</a>
+        </li>
+        <li class="list-unstyled">
+          <a [routerLinkActive]="'active'"
+             [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="'/donacija'"
+             class="navbar-link">{{ 'Donacija' }}</a>
+        </li>
+        <li class="list-unstyled">
+          <a [routerLinkActive]="'active'"
+             [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="'/kontakt'"
+             class="navbar-link">{{ 'Kontakt' }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
