@@ -1,0 +1,134 @@
+<div class="banner-wrapper col-12 ">
+  <img ngSrc="/iStock-1281812333.jpg"
+       alt="logo"
+       class="object-fit-cover"
+       priority
+       fill>
+</div>
+<div class="container py-3 py-lg-4 d-flex flex-column min-vh-100 justify-content-center align-items-center flex-column gap-2">
+  <div class="row">
+    <div class="col-12">
+      <h4>Vpis novih članov</h4>
+    </div>
+  </div>
+  <form #registrationFormRef="ngForm"
+        [formGroup]="registrationForm"
+        class="row form-wrapper --registration"
+        (ngSubmit)="onSubmit()">
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="email">Email roditelja*</label>
+      <input [ngClass]="{'is-invalid': email.invalid && (registrationFormRef.submitted || email.touched)}"
+             placeholder="Email roditelja"
+             class="form-control mb-0"
+             formControlName="email"
+             id="email">
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="enrollmentYear">Godina vpisa*</label>
+      <input [ngClass]="{'is-invalid': enrollmentYear.invalid && (registrationFormRef.submitted || enrollmentYear.touched)}"
+             placeholder="Godina vpisa"
+             class="form-control mb-0"
+             required
+             formControlName="enrollmentYear"
+             id="enrollmentYear">
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="name">Ime otroka*</label>
+      <input [ngClass]="{'is-invalid': name.invalid && (registrationFormRef.submitted || name.touched)}"
+             placeholder="Ime otroka"
+             class="form-control mb-0"
+             formControlName="name"
+             id="name">
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="surname">Priimek otroka*</label>
+      <input [ngClass]="{'is-invalid': surname.invalid && (registrationFormRef.submitted || surname.touched)}"
+             placeholder="Priimek otroka"
+             class="form-control mb-0"
+             formControlName="surname"
+             id="surname">
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="dateOfBirth">Datum rojstva*</label>
+      <input [ngClass]="{'is-invalid': dateOfBirth.invalid && (registrationFormRef.submitted || dateOfBirth.touched)}"
+             id="dateOfBirth"
+             type="text"
+             class="form-control mb-0"
+             formControlName="dateOfBirth"
+             ngbDatepicker
+             #dp="ngbDatepicker"
+             (click)="dp.toggle()"
+             placeholder="Izberite datum">
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="gender">Spol otroka*</label>
+      <ng-select [ngClass]="{'is-invalid': gender.invalid && (registrationFormRef.submitted || gender.touched)}"
+                 [items]="genderOptions"
+                 [clearable]="false"
+                 id="gender"
+                 formControlName="gender"
+                 class="a-ng-select">
+      </ng-select>
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="grade">
+        Otrok je vpisan v:*
+      </label>
+      <ng-select [ngClass]="{'is-invalid': grade.invalid && (registrationFormRef.submitted || grade.touched)}"
+                 [items]="schoolOptions"
+                 [virtualScroll]="true"
+                 [clearable]="false"
+                 searchable="true"
+                 bindLabel="label"
+                 bindValue="value"
+                 id="grade"
+                 formControlName="grade"
+                 class="a-ng-select">
+      </ng-select>
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="address">Naslov*</label>
+      <input [ngClass]="{'is-invalid': address.invalid && (registrationFormRef.submitted || address.touched)}"
+             placeholder="Naslov"
+             class="form-control mb-0"
+             formControlName="address"
+             id="address">
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="postalCode">Poštna številka*</label>
+      <input [ngClass]="{'is-invalid': postalCode.invalid && (registrationFormRef.submitted || postalCode.touched)}"
+             placeholder="Poštna številka"
+             class="form-control mb-0"
+             formControlName="postalCode"
+             id="postalCode">
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="form-label mb-0"
+             for="city">Kraj*</label>
+      <input [ngClass]="{'is-invalid': city.invalid && (registrationFormRef.submitted || city.touched)}"
+             placeholder="Kraj"
+             class="form-control mb-0"
+             formControlName="city"
+             id="city">
+    </div>
+    <div class="col-12 col-md-6 mt-2 m-auto">
+      <button [disabled]="!registrationForm.valid || loading"
+              class="btn btn-dark w-100"
+              type="submit">
+        Pošlji
+        @if (loading) {
+          <app-loader mode="small"></app-loader>
+        }
+      </button>
+    </div>
+  </form>
+</div>

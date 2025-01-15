@@ -1,0 +1,16 @@
+<div class="navbar d-flex justify-content-start align-items-center border-bottom p-2 gap-2">
+  <button (click)="logout()"
+          class="btn btn-danger">Log out
+  </button>
+  <button (click)="fetchExcelFile()"
+          [disabled]="loading"
+          class="btn btn-success">Export excel file
+    @if (loading) {
+      <app-loader mode="small"></app-loader>
+    }
+  </button>
+  <button (click)="openNewPostNgbModal()"
+          class="btn btn-light">Create new event
+  </button>
+</div>
+<app-events></app-events>
